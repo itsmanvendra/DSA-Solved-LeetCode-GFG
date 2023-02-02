@@ -7,10 +7,11 @@ using namespace std;
 class Solution{
 public:
     
-    void solve(string S, set<string>&st, int index, string x){
+    void solve(string S, vector<string>&st, int index, string x){
         //base Condition
-        if(index > S.size()-1){
-            st.insert(x);
+        if(index == S.size()-1){
+            x+=S[index];
+            st.push_back(x);
             return;
         }
         
@@ -19,9 +20,9 @@ public:
         solve(S,st, index+1, x);
         
         //include gap
-        if(index < S.size()-1){
-            x+=' ';
-        }
+        
+        x+=' ';
+        
         
         solve(S, st, index+1, x);
         
@@ -30,13 +31,11 @@ public:
     vector<string> permutation(string S){
         // Code Here
         vector<string>ans;
-        set<string>st;
+        // set<string>st;
         int index = 0;
         string x = "";
-        solve(S, st, index, x);
-        for(auto i = st.begin(); i!= st.end(); i++){
-            ans.push_back(*i);
-        }
+        solve(S, ans, index, x);
+        
         sort(ans.begin(), ans.end());
         return ans;
         
