@@ -35,12 +35,11 @@ public:
         for(int i = 0; i<order.size(); i++){
             mp[order[i]] = i;
         }
-        for(int i = 0; i<words.size(); i++){
-            for(int j = i+1; j<words.size(); j++){
+        for(int i = 0; i<words.size()-1; i++){
+            
                 // cout<<words[i]<<" "<<words[j]<<endl;
-                if(!isSorted(words[i], words[j])){
+                if(!isSorted(words[i], words[i+1])){
                     return false;
-                }
             }
         }
         return true;
