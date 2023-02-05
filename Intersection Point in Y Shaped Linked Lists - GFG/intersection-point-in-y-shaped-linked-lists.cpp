@@ -51,11 +51,26 @@ struct Node {
 class Solution
 {
 public:
+
+    int solve(Node* temp1, Node* temp2){
+        while(temp1 != NULL && temp2 != NULL && temp1->next != temp2->next ){
+                temp1 = temp1->next;
+                temp2 = temp2->next;
+            }
+            if(temp1 == NULL || temp2 == NULL){
+                return -1;
+            }
+            else{
+                temp1 = temp1->next;
+                return temp1->data;
+            }
+    }
     int intersectPoint(Node* head1, Node* head2)
     {
         // Your Code Here
         int count1 = 0;
         int count2 = 0;
+        int ans = 0;
         Node* temp = head1;
         while(temp!= NULL){
             count1 += 1;
@@ -73,19 +88,8 @@ public:
                 temp = temp->next;
                 count1 -= 1;
             }
-            Node* temp1 = temp;
-            Node* temp2 = head2;
-            while(temp1 != NULL && temp2 != NULL && temp1->next != temp2->next ){
-                temp1 = temp1->next;
-                temp2 = temp2->next;
-            }
-            if(temp1 == NULL || temp2 == NULL){
-                return -1;
-            }
-            else{
-                temp1 = temp1->next;
-                return temp1->data;
-            }
+
+            ans = solve(temp, head2);
         }
         else{
             temp = head2;
@@ -93,22 +97,12 @@ public:
                 temp = temp->next;
                 count2 -= 1;
             }
-            Node* temp2 = temp;
-            Node* temp1 = head1;
-            while(temp1 != NULL && temp2 != NULL && temp1->next != temp2->next ){
-                temp1 = temp1->next;
-                temp2 = temp2->next;
-            }
-            if(temp1 == NULL || temp2 == NULL){
-                return -1;
-            }
-            else{
-                temp1 = temp1->next;
-                return temp1->data;
-            }
+            
+            ans = solve(head1, temp);
+            
             
         }
-        return -1;
+        return ans;
         
     }
 };
