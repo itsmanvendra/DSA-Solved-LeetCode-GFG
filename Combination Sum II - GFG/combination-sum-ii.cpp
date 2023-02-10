@@ -1,15 +1,15 @@
 //{ Driver Code Starts
-// Initial Template for C++
+//Initial Template for C++
+
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
-// User function Template for C++
+//User function Template for C++
 
-class Solution {
+class Solution{
 public:
-    void solve(set<vector<int>>&st, vector<int>output, int index, vector<int>v, int target, unordered_map<int, int>&mp){
+        void solve(set<vector<int>>&st, vector<int>output, int index, vector<int>v, int target, unordered_map<int, int>&mp){
         if(index>=v.size() || target <= 0){
             if(target == 0){
                 st.insert(output);
@@ -35,12 +35,14 @@ public:
         }
         
     }
-    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+    vector<vector<int>> CombinationSum2(vector<int> candidates,int n,int target)
+    {
+        //code here
         vector<int>v;
         vector<vector<int>>ans;
         unordered_map<int, int>mp;
         sort(candidates.begin(), candidates.end());
-        int k = target;
+        // int k = target;
         int sum1 = 0;
         for(int i=0; i<candidates.size(); i++){
             if(candidates[i] <= target){
@@ -69,41 +71,33 @@ public:
 };
 
 //{ Driver Code Starts.
-int main() {
 
-    int t = 1;
-    cin >> t;
 
-    // freopen ("output_gfg.txt", "w", stdout);
-
-    while (t--) {
-        int n, k;
-        cin >> n >> k;
-        vector<int> candidates(n);
-        for (int i = 0; i < n; ++i) {
-            cin >> candidates[i];
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        vector<int> arr(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>arr[i];
         }
-        // char marker;
-        // cin >> marker;
-
-        Solution obj;
-
-        vector<vector<int>> comb = obj.combinationSum2(candidates, k);
-        sort(comb.begin(), comb.end());
-        cout << "[ ";
-        for (int i = 0; i < comb.size(); i++) {
-            cout << "[ ";
-            for (int j = 0; j < comb[i].size(); j++) {
-                cout << comb[i][j] << " ";
+        Solution ob;
+        auto obj=ob.CombinationSum2(arr,n,k);
+        for(int i=0;i<obj.size();i++)
+        {
+            for(int j=0;j<obj[i].size();j++)
+            {
+                cout<<obj[i][j]<<" ";
             }
-            cout << "]";
+            cout<<"\n";
         }
-        cout << " ]\n";
-
-        // cout << "\n~\n";
+        if(obj.size()==0) cout<<"\n";
     }
-    fclose(stdout);
     return 0;
 }
-
 // } Driver Code Ends
