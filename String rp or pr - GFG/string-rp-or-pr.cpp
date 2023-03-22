@@ -25,10 +25,10 @@ public:
                 s.push_back(S[i]);
             }
         }
-        reverse(s.begin(), s.end());
+        // reverse(s.begin(), s.end());
         stack<char>sTX;
         for(int i = 0; i<s.size(); i++){
-            if(!sTX.empty() && sTX.top() == 'p' && s[i] == 'r'){
+            if(!sTX.empty() && sTX.top() == 'r' && s[i] == 'p'){
                 countX += Y;
                 sTX.pop();
                 
@@ -52,11 +52,11 @@ public:
             }
         }
         // cout<<s<<endl;
-        reverse(s.begin(), s.end());
+        // reverse(s.begin(), s.end());
         // cout<<s<<endl;
         stack<char> sTY;
         for(int i = 0; i<s.size(); i++){
-            if(!sTY.empty() && sTY.top() == 'r' && s[i] == 'p'){
+            if(!sTY.empty() && sTY.top() == 'p' && s[i] == 'r'){
                 countY += X;
                 sTY.pop();
             }
